@@ -20,5 +20,43 @@ class Conexion
         return $this->conect;
     }
 
+    public static function query($sql,$params=[])
+    {
+        $db= new Conexion();
+        $link= (object)$db->conect();
+        $link->beginTransaction();/* por si existe algun error en la peticion*/
+        $query=$link->prepare($sql);
+        if(!$query->execute($params)){
+            $link->rollBack();
+            $error =$query->errorInfo();
+            throw new Exception($error[2]);
+          }
+          
+    /* SELECT/INSERT/UPDATE/DELETE/ALTER TABLE */
+    /* Manejo del tipo Jquery */
+    /* SELECT */
+    if(strpos($sql,'SELECT')!==false)
+    {
+        return $query->rowCount() > 0 ? $query->fetchAll(PDO::FETCH_ASSOC) : False;
+
+    }elseif(strpos($sql,'INSERT')!==false){
+        $id=$link->lastInsertId();
+        $link->commit();
+        return $id;
+    }elseif(strpos($sql,'UPDATE')!==false){
+        $link->commit();
+        return true;
+    }elseif(strpos($sql,'DELETE')!==false){
+        if($query->rowCount()>0){
+            $link->commit();
+            return true;
+        }
+        $link->rollBack();
+        return false;
+    }else{
+        $link->commit();
+        return true;
+    }
+    }
 }
  
