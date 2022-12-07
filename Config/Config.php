@@ -16,7 +16,7 @@ const CICLOESTRAL = 6;
 const USERTYPE = 7;
 
 /* ----------------------------------------------------- */
-/*             CONSTANTES PARA CONEXION DB              hola mundo    */
+/*             CONSTANTES PARA CONEXION DB               */
 /* ----------------------------------------------------- */
 
 const DB_HOST = "dbtecno.mysql.database.azure.com";
