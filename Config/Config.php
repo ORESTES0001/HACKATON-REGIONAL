@@ -16,11 +16,11 @@ const CICLOESTRAL = 6;
 const USERTYPE = 7;
 
 /* ----------------------------------------------------- */
-/*             CONSTANTES PARA CONEXION DB                  */
+/*             CONSTANTES PARA CONEXION DB              hola mundo    */
 /* ----------------------------------------------------- */
 
 const DB_HOST = "dbtecno.mysql.database.azure.com";
-const DB_NAME = "dbtecno";
+const DB_NAME = "dbtec";
 const DB_USER = "Slender";
 const DB_PASSWORD = "Tecno89!!";
 const DB_CHARSET = "utf8";
